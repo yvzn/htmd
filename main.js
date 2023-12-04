@@ -1,4 +1,5 @@
 import { Converter } from 'showdown';
+import TurndownService from 'turndown';
 import { ClipboardUtils } from './clipboard';
 
 import './style.css';
@@ -18,19 +19,21 @@ let htmlDocument = document.getElementById('html-document');
 let markdownDocument = document.getElementById('markdown-document');
 let lastDocument = htmlDocument;
 
-let converter = new Converter();
+
+let markdownToHtmlConverter = new Converter();
+let htmlToMarkdownConverter = new TurndownService();
 
 document.getElementById('html-link').addEventListener('click', function () {
   let markdown = markdownDocument.value;
   if (!markdown) return;
-  let html = converter.makeHtml(markdown);
+  let html = markdownToHtmlConverter.makeHtml(markdown);
   htmlDocument.value = html;
   lastDocument = 'html-documenet';
 });
 
 function convertToMarkdown() {
   let html = htmlDocument.value;
-  let markdown = converter.makeMarkdown(html);
+  let markdown = htmlToMarkdownConverter.turndown(html);
   markdownDocument.value = markdown;
 }
 
@@ -45,7 +48,7 @@ document.getElementById('preview-link').addEventListener('click', function () {
   }
   let markdown = markdownDocument.value;
   if (!markdown) return;
-  let html = converter.makeHtml(markdown);
+  let html = markdownToHtmlConverter.makeHtml(markdown);
   document.getElementById('preview').innerHTML = html;
 });
 

@@ -12,6 +12,7 @@
     "vite": "^5.0.2"
   },
   "dependencies": {
-    "showdown": "^2.1.0"
+    "showdown": "^2.1.0",
+    "turndown": "^7.1.2"
   }
 }
