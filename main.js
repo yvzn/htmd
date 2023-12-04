@@ -3,9 +3,11 @@ import { ClipboardUtils } from './clipboard';
 
 import './style.css';
 
-for (let el of document.querySelectorAll('nav a')) {
+const navigationLinks = document.querySelectorAll('nav a');
+
+for (let el of navigationLinks) {
   el.addEventListener('click', function (event) {
-    for (let link of document.querySelectorAll('nav a')) {
+    for (let link of navigationLinks) {
       link.classList.remove('active');
     }
     event.target.classList.add('active');
@@ -15,10 +17,6 @@ for (let el of document.querySelectorAll('nav a')) {
 let htmlDocument = document.getElementById('html-document');
 let markdownDocument = document.getElementById('markdown-document');
 let lastDocument = htmlDocument;
-
-addEventListener('load', function () {
-  document.getElementById('html-link').click();
-});
 
 let converter = new Converter();
 

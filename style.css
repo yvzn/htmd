@@ -14,6 +14,8 @@
   --text-0-color: white;
   --border-0-color: var(--layer-0-color);
   --space-0: 0.5rem;
+  --space-1: calc(2 * var(--space-0));
+  --space-2: calc(4 * var(--space-0));
 }
 
 html {
@@ -21,52 +23,66 @@ html {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
   height: 100vh;
   background-color: var(--layer-0-color);
   color: var(--text-0-color);
 }
 
-body > h1 {
+body>h1 {
   background-color: var(--layer-2-color);
   padding: var(--space-0);
 }
 
-body > nav {
+body>nav {
   background-color: var(--layer-1-color);
 }
 
-body > nav a {
+body>nav a {
   display: inline-block;
   color: var(--text-0-color);
   padding: var(--space-0);
 }
 
-body > nav a.active {
+body>nav a.active {
   background-color: var(--layer-0-color);
 }
 
-body > form {
-  flex-grow: 1;
+body>article {
   padding: var(--space-0);
+  grid-row: 3 / 4;
+  grid-column: 1 / 1;
 }
 
-body > form section {
+ul, ol {
+  margin-inline-start: var(--space-2);
+}
+
+body>form {
+  padding: var(--space-0);
+  grid-row: 3 / 4;
+  grid-column: 1 / 1;
+  overflow: auto;
+}
+
+body>form section {
   height: 100%;
   display: none;
+  overflow: auto;
+  background-color: var(--layer-0-color);
 }
 
-body > form section:target {
+body>form section:target {
   display: block;
 }
 
-body > form fieldset {
+body>form fieldset {
   height: 100%;
   border: none;
 }
 
-body > form textarea {
+body>form textarea {
   height: 100%;
   min-height: 10rem;
   overflow: auto;
@@ -77,28 +93,23 @@ body > form textarea {
   border: solid 1px var(--border-0-color);
 }
 
-body > form ::placeholder {
+body>form ::placeholder {
   color: var(--text-0-color);
 }
 
-body > form #preview {
-  height: 100%;
-  overflow: auto;
-}
-
-body > form #image button {
+body>form #image button {
   padding: var(--space-0);
   background-color: var(--layer-2-color);
   border: solid 1px inherit;
   color: var(--text-0-color);
 }
 
-body > form #image-tag {
+body>form #image-tag {
   display: none;
   padding: var(--space-0) 0;
 }
 
-body > form #image-document {
+body>form #image-document {
   display: none;
   padding: var(--space-0) 0;
   max-height: 10rem;
