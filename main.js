@@ -52,29 +52,33 @@ document.getElementById('preview-link').addEventListener('click', function () {
   document.getElementById('preview').innerHTML = html;
 });
 
-function pasteImageTo(imageElement, textareaElement) {
-  ClipboardUtils.readImage(function (data, error) {
-    if (error) {
-      console.error(error);
-      textareaElement.value = error.message;
-      return;
-    }
-    if (data) {
-      imageElement.src = data;
-      textareaElement.value = `![Alt text](${data})`;
-      return;
-    }
-    textareaElement.value =
-      'Image bitmap is not avaialble - copy it to clipboard.';
-  });
-}
 
 document.getElementById('image-button').addEventListener('click', function () {
   var image = document.getElementById('image-tag');
-  image.style.display = 'block';
+  var errorMessage = document.getElementById('image-error');
   var textarea = document.getElementById('image-document');
-  textarea.style.display = 'block';
-  pasteImageTo(image, textarea);
+
+  [image, errorMessage, textarea].map(el => el.style.display = 'none');
+
+  ClipboardUtils.readImage(function (data, error) {
+    if (error) {
+      console.error(error);
+      errorMessage.style.display = 'block';
+      errorMessage.innerHTML = error.message;
+      return;
+    }
+    if (data) {
+      image.src = data;
+      image.style.display = 'block';
+      textarea.value = `![Alt text](${data})`;
+      textarea.style.display = 'block';
+      errorMessage.innerHTML = '';
+      return;
+    }
+    errorMessage.style.display = 'block';
+    errorMessage.innerHTML =
+      'No image available in the clipboard - copy it manually...';
+  });
 });
 
 document

@@ -2,7 +2,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  font-weight: normal;
   margin: 0;
   padding: 0;
 }
@@ -35,13 +36,20 @@ body>h1 {
   padding: var(--space-0);
 }
 
+body>h1 a {
+  text-decoration: none;
+}
+
 body>nav {
   background-color: var(--layer-1-color);
 }
 
+a {
+  color: var(--text-0-color);
+}
+
 body>nav a {
   display: inline-block;
-  color: var(--text-0-color);
   padding: var(--space-0);
 }
 
@@ -107,10 +115,16 @@ body>form #image button {
 body>form #image-tag {
   display: none;
   padding: var(--space-0) 0;
+  max-height: 25vh;
 }
 
 body>form #image-document {
   display: none;
   padding: var(--space-0) 0;
   max-height: 10rem;
+}
+
+body>form #image-error {
+  display: none;
+  color: #f88070;
 }
