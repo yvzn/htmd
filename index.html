@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML to Markdown converter</title>
+    <base target="_blank" />
+  </head>
+  <body>
+    <h1>html 2 md</h1>
+    <nav>
+      <a href="#html" id="html-link" target="_self">html</a>
+      <a href="#markdown" id="markdown-link" target="_self">markdown</a>
+      <a href="#image" target="_self">images</a>
+      <a href="#preview" id="preview-link" target="_self">preview</a>
+    </nav>
+    <form>
+      <section id="html">
+        <fieldset>
+          <textarea
+            id="html-document"
+            placeholder="Start typing HTML here..."
+          ></textarea>
+        </fieldset>
+      </section>
+      <section id="markdown">
+        <fieldset>
+          <textarea
+            id="markdown-document"
+            placeholder="Start typing markdown code here..."
+          ></textarea>
+        </fieldset>
+      </section>
+      <section id="image">
+        <fieldset>
+          <button id="image-button" type="button">read from clipboard</button>
+          <img id="image-tag" />
+          <textarea id="image-document"></textarea>
+        </fieldset>
+      </section>
+      <section id="preview"></section>
+    </form>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
