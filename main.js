@@ -1,5 +1,11 @@
 import { Converter } from 'showdown';
 import TurndownService from 'turndown';
+import { EditorView, basicSetup } from "codemirror"
+import { placeholder} from "@codemirror/view"
+import { markdown } from "@codemirror/lang-markdown"
+import { html } from "@codemirror/lang-html"
+import { oneDark } from '@codemirror/theme-one-dark';
+
 import { ClipboardUtils } from './clipboard';
 
 import './style.css';
@@ -15,45 +21,62 @@ for (let el of navigationLinks) {
   });
 }
 
-let htmlDocument = document.getElementById('html-document');
-let markdownDocument = document.getElementById('markdown-document');
-let lastDocument = htmlDocument;
-
+let htmlDocument = '';
+let markdownDocument = '';
 
 let markdownToHtmlConverter = new Converter();
 let htmlToMarkdownConverter = new TurndownService();
 
+let htmlEditor, markdownEditor;
+
 document.getElementById('html-link').addEventListener('click', function () {
-  let markdown = markdownDocument.value;
-  if (!markdown) return;
-  let html = markdownToHtmlConverter.makeHtml(markdown);
-  htmlDocument.value = html;
-  lastDocument = 'html-documenet';
+  syncDocumentWithEditor();
+
+  if (markdownDocument) {
+    htmlDocument = markdownToHtmlConverter.makeHtml(markdownDocument);
+  }
+
+  htmlEditor = new EditorView({
+    extensions: [basicSetup, html(), oneDark, EditorView.lineWrapping, placeholder('Start typing HTML here...')],
+    parent: document.getElementById('html'),
+  })
+
+  let transaction = htmlEditor.state.update({ changes: { from: 0, insert: htmlDocument } })
+  htmlEditor.dispatch(transaction);
+
 });
 
-function convertToMarkdown() {
-  let html = htmlDocument.value;
-  let markdown = htmlToMarkdownConverter.turndown(html);
-  markdownDocument.value = markdown;
-}
 
 document.getElementById('markdown-link').addEventListener('click', function () {
-  convertToMarkdown();
-  lastDocument = markdownDocument;
+  syncDocumentWithEditor();
+
+  if (htmlDocument) {
+    markdownDocument = htmlToMarkdownConverter.turndown(htmlDocument);
+  }
+
+  markdownEditor = new EditorView({
+    extensions: [basicSetup, markdown(), oneDark, EditorView.lineWrapping, placeholder('Start typing markdown here...')],
+    parent: document.getElementById('markdown'),
+  })
+  let transaction = markdownEditor.state.update({ changes: { from: 0, insert: markdownDocument } })
+  markdownEditor.dispatch(transaction)
+
 });
 
 document.getElementById('preview-link').addEventListener('click', function () {
-  if (lastDocument === htmlDocument) {
-    convertToMarkdown();
+  let finalHtml;
+  if (htmlEditor) {
+    finalHtml = htmlEditor.state.doc.toString();
+  } else {
+    finalHtml = markdownToHtmlConverter.makeHtml(markdownEditor.state.doc.toString());
   }
-  let markdown = markdownDocument.value;
-  if (!markdown) return;
-  let html = markdownToHtmlConverter.makeHtml(markdown);
-  document.getElementById('preview').innerHTML = html;
+
+  document.getElementById('preview').innerHTML = finalHtml;
 });
 
-
 document.getElementById('image-button').addEventListener('click', function () {
+  syncDocumentWithEditor();
+
   var image = document.getElementById('image-tag');
   var errorMessage = document.getElementById('image-error');
   var textarea = document.getElementById('image-document');
@@ -86,3 +109,19 @@ document
   .addEventListener('click', function (event) {
     event.target.select();
   });
+
+function syncDocumentWithEditor() {
+  if (htmlEditor) {
+    markdownDocument = '';
+    htmlDocument = htmlEditor.state.doc.toString();
+    htmlEditor.destroy();
+    htmlEditor = undefined;
+  }
+
+  if (markdownEditor) {
+    htmlDocument = '';
+    markdownDocument = markdownEditor.state.doc.toString();
+    markdownEditor.destroy();
+    markdownEditor = undefined;
+  }
+}
