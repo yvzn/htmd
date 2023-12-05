@@ -127,4 +127,5 @@ body>form #image-document {
 body>form #image-error {
   display: none;
   color: #f88070;
+  padding: var(--space-0) 0;
 }
