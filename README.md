@@ -1,8 +1,8 @@
 # Yet another html-to-markdown online converter
 
-I do not trust the other third party online services with my data (and neither should you).
+Convert from HTML to Markdown, and from Markdown to HTML, with inline images.
 
-So I built my own clone. 😇
+I do not trust the other third party online services with my data. So I built my own version 😇
 
 ## How ?
 
@@ -38,3 +38,4 @@ This project uses open-source, third party software:
 - [ViteJS](https://github.com/vitejs/vite): MIT License, Copyright (c) 2019-present Evan You & Vite Contributors
 - [Showdownjs](https://github.com/showdownjs/showdown): MIT License, Copyright (c) 2018,2021 ShowdownJS
 - [Turndown](https://github.com/mixmark-io/turndown): MIT License, Copyright (c) 2017 Dom Christie
+- [Codemirror](https://github.com/codemirror/dev/): MIT License, Copyright (C) 2018 by Marijn Haverbeke, Adrian Heine, and others

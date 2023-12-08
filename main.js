@@ -63,6 +63,10 @@ document.getElementById('markdown-link').addEventListener('click', function () {
 
 });
 
+let previewDocument = document.getElementById('preview').attachShadow({ mode: 'open'});
+let previewStyle = document.createElement("style");
+previewStyle.textContent = `a { color: gray }`;
+
 document.getElementById('preview-link').addEventListener('click', function () {
   let finalHtml;
   if (htmlEditor) {
@@ -71,7 +75,8 @@ document.getElementById('preview-link').addEventListener('click', function () {
     finalHtml = markdownToHtmlConverter.makeHtml(markdownEditor.state.doc.toString());
   }
 
-  document.getElementById('preview').innerHTML = finalHtml;
+  previewDocument.innerHTML = finalHtml;
+  previewDocument.appendChild(previewStyle);
 });
 
 document.getElementById('image-button').addEventListener('click', function () {
