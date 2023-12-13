@@ -48,13 +48,20 @@ a {
   color: var(--text-0-color);
 }
 
-body>nav a {
+body>nav label {
   display: inline-block;
   padding: var(--space-0);
+  cursor: pointer;
 }
 
-body>nav a.active {
+body>nav input {
+  position: absolute;
+  opacity: 0;
+}
+
+body>nav input:checked + label {
   background-color: var(--layer-0-color);
+  text-decoration: underline;
 }
 
 body>article {
@@ -79,10 +86,6 @@ body>form section {
   display: none;
   overflow: auto;
   background-color: var(--layer-0-color);
-}
-
-body>form section:target {
-  display: block;
 }
 
 body>form fieldset {
