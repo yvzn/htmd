@@ -9,7 +9,28 @@
 </head>
 
 <body>
-  <h1><a href="/" target="_self">html to md</a></h1>
+  <h1><a href="/" target="_self">html 2 md</a></h1>
+  <aside>
+    <button id="dark-mode-toggle" type="button" aria-label="Toggle dark mode">
+      <!-- Sun Icon (Dark mode disabled) -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="sun-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        stroke-width="2">
+        <title>Disabled</title>
+        <path
+          d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+          stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+
+      <!-- Moon Crescent Icon (Dark mode enabled) -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="moon-icon hidden" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor" stroke-width="2">
+        <title>Enabled</title>
+        <path
+          d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+          stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+  </aside>
   <nav>
     <input type="radio" value="html" name="nav-tab" id="nav-tab-html">
     <label for="nav-tab-html">
@@ -17,14 +38,14 @@
         <path fill-rule="evenodd"
           d="M14 4.5V11h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zm-9.736 7.35v3.999h-.791v-1.714H1.79v1.714H1V11.85h.791v1.626h1.682V11.85h.79Zm2.251.662v3.337h-.794v-3.337H4.588v-.662h3.064v.662zm2.176 3.337v-2.66h.038l.952 2.159h.516l.946-2.16h.038v2.661h.715V11.85h-.8l-1.14 2.596H9.93L8.79 11.85h-.805v3.999h.706m4.71-.674h1.696v.674H12.61V11.85h.79v3.325Z" />
       </svg>
-      html</label>
+      <span>html</span></label>
     <input type="radio" value="markdown" name="nav-tab" id="nav-tab-markdown">
     <label for="nav-tab-markdown">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
         <path fill-rule="evenodd"
           d="M14 4.5V14a2 2 0 0 1-2 2H9v-1h3a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM.706 13.189v2.66H0V11.85h.806l1.14 2.596h.026l1.14-2.596h.8v3.999h-.716v-2.66h-.038l-.946 2.159h-.516l-.952-2.16H.706Zm3.919 2.66V11.85h1.459c.406 0 .741.078 1.005.234.263.157.46.383.589.68.13.297.196.655.196 1.075 0 .422-.066.784-.196 1.084-.131.301-.33.53-.595.689-.264.158-.597.237-1 .237H4.626Zm1.353-3.354h-.562v2.707h.562c.186 0 .347-.028.484-.082a.8.8 0 0 0 .334-.252 1.14 1.14 0 0 0 .196-.422c.045-.168.067-.365.067-.592a2.1 2.1 0 0 0-.117-.753.89.89 0 0 0-.354-.454c-.159-.102-.362-.152-.61-.152Z" />
       </svg>
-      markdown</label>
+      <span>markdown</span></label>
     <input type="radio" value="image" name="nav-tab" id="nav-tab-image">
     <label for="nav-tab-image">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-image"
@@ -33,7 +54,7 @@
         <path
           d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v8l-2.083-2.083a.5.5 0 0 0-.76.063L8 11 5.835 9.7a.5.5 0 0 0-.611.076L3 12z" />
       </svg>
-      images</label>
+      <span>images</span></label>
     <input type="radio" value="preview" name="nav-tab" id="nav-tab-preview">
     <label for="nav-tab-preview">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -43,7 +64,7 @@
         <path
           d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z" />
       </svg>
-      preview</label>
+      <span>preview</span></label>
   </nav>
   <article>
     <noscript>

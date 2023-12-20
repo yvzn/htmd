@@ -43,7 +43,7 @@ customElements.define('custom-preview', CustomPreview)
 
 document.addEventListener('switch-tab', function (event) {
   if (lastTab) {
-    lastTab.style.display = 'none'  
+    lastTab.style.display = 'none'
   }
   lastTab = document.getElementById(event.detail.sectionId)
   lastTab.style.display = 'block'
@@ -131,3 +131,19 @@ document
   .addEventListener('click', function (event) {
     event.target.select();
   });
+
+const darkModeToggle = document.getElementById("dark-mode-toggle");
+
+function toggleDarkMode() {
+  document.body.classList.toggle("dark");
+  document.body.dispatchEvent(new CustomEvent('toggle-dark-mode'));
+}
+
+if (
+  window.matchMedia &&
+  window.matchMedia("(prefers-color-scheme: dark)").matches
+) {
+  toggleDarkMode();
+}
+
+darkModeToggle.addEventListener("click", toggleDarkMode);
