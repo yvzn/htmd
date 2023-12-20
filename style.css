@@ -9,10 +9,14 @@
 }
 
 :root {
-  --layer-2-color: hsl(222, 10%, 20%);
-  --layer-1-color: hsl(218, 10%, 16%);
-  --layer-0-color: hsl(220, 18%, 10%);
-  --text-0-color: white;
+  --layer-2-color-dark: hsl(222deg, 10%, 20%);
+  --layer-1-color-dark: hsl(218deg, 10%, 16%);
+  --layer-0-color-dark: hsl(220deg, 18%, 10%);
+  --text-0-color-dark: white;
+  --layer-2-color-light: hsl(213deg, 20%, 89%);
+  --layer-1-color-light: hsl(210deg, 29%, 97%);
+  --layer-0-color-light: white;
+  --text-0-color-light: black;
   --border-0-color: var(--layer-0-color);
   --space-0: 0.5rem;
   --space-1: calc(2 * var(--space-0));
@@ -24,11 +28,25 @@ html {
 }
 
 body {
+  --layer-2-color: var(--layer-2-color-dark);
+  --layer-1-color: var(--layer-1-color-dark);
+  --layer-0-color: var(--layer-0-color-dark);
+  --text-0-color: var(--text-0-color-dark);
+
   display: grid;
   grid-template-rows: auto auto 1fr;
   height: 100vh;
   background-color: var(--layer-0-color);
   color: var(--text-0-color);
+}
+
+@media screen and (prefers-color-scheme: light) {
+  body {
+    --layer-2-color: var(--layer-2-color-light);
+    --layer-1-color: var(--layer-1-color-light);
+    --layer-0-color: var(--layer-0-color-light);
+    --text-0-color: var(--text-0-color-light);
+  }
 }
 
 body>h1 {
@@ -52,6 +70,10 @@ body>nav label {
   display: inline-block;
   padding: var(--space-0);
   cursor: pointer;
+}
+
+body>nav label svg {
+  vertical-align: middle;
 }
 
 body>nav input {

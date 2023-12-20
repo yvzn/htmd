@@ -17,6 +17,11 @@ export class CustomEditorView extends HTMLElement {
             tooltip = 'Start typing markdown here...'
         }
 
+        let theme = [oneDark];
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+            theme = [];
+        }
+
         const handleChange = EditorView.updateListener.of((v) => {
             if (v.docChanged) {
                 this.dispatchEvent(new CustomEvent('change'));
@@ -24,7 +29,7 @@ export class CustomEditorView extends HTMLElement {
         })
 
         this.editorView = new EditorView({
-            extensions: [basicSetup, language(), oneDark, EditorView.lineWrapping, placeholder(tooltip), handleChange],
+            extensions: [basicSetup, language(), EditorView.lineWrapping, placeholder(tooltip), handleChange, ...theme],
             parent: this,
         });
     }
