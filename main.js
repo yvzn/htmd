@@ -16,6 +16,7 @@ for (let el of navigationTabs) {
 const editors = {
   html: null,
   markdown: null,
+  asciidoc: null
 }
 
 let lastModified = null
@@ -35,6 +36,9 @@ document.addEventListener('switch-tab', function (event) {
     showEditor(event.detail.sectionId)
   }
   if (event.detail.sectionId === 'markdown') {
+    showEditor(event.detail.sectionId)
+  }
+  if (event.detail.sectionId === 'asciidoc') {
     showEditor(event.detail.sectionId)
   }
   if (event.detail.sectionId === 'preview') {
