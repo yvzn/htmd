@@ -1,8 +1,6 @@
-import { Converter } from 'showdown';
-import TurndownService from 'turndown';
-
 import { ClipboardUtils } from './image/clipboard';
 import { CustomEditorView } from './editor/custom-editor-view';
+import { converters } from './editor/converters';
 import { CustomPreview } from './preview/custom-preview';
 
 import './style.css';
@@ -18,21 +16,6 @@ for (let el of navigationTabs) {
 const editors = {
   html: null,
   markdown: null,
-}
-
-const converters = {
-  html: {
-    to: {
-      html: x => x,
-      markdown: x => new TurndownService().turndown(x)
-    }
-  },
-  markdown: {
-    to: {
-      html: x => new Converter().makeHtml(x),
-      markdown: x => x
-    }
-  }
 }
 
 let lastModified = null
