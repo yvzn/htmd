@@ -1,9 +1,9 @@
 import { Converter } from 'showdown';
 import TurndownService from 'turndown';
 
-import { ClipboardUtils } from './clipboard';
-import { CustomEditorView } from './custom-editor-view';
-import { CustomPreview } from './custom-preview';
+import { ClipboardUtils } from './image/clipboard';
+import { CustomEditorView } from './editor/custom-editor-view';
+import { CustomPreview } from './preview/custom-preview';
 
 import './style.css';
 
