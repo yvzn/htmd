@@ -15,7 +15,7 @@
     "@codemirror/lang-html": "^6.4.7",
     "@codemirror/lang-markdown": "^6.2.3",
     "@codemirror/theme-one-dark": "^6.1.2",
-    "asciidoctor": "^3.0.2",
+    "asciidoctor": "^3.0.3",
     "codemirror": "^6.0.1",
     "codemirror-asciidoc": "^2.0.1",
     "showdown": "^2.1.0",
