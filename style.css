@@ -146,7 +146,6 @@ body>form section {
 }
 
 body>form fieldset {
-  height: 100%;
   border: none;
 }
 
@@ -165,11 +164,28 @@ body>form ::placeholder {
   color: var(--text-0-color);
 }
 
+body>form #html button {
+  padding: var(--space-0);
+  background-color: var(--layer-2-color);
+  border: solid 1px inherit;
+  color: var(--text-0-color);
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+
+body>form #image fieldset {
+  height: 100%;
+}
+
 body>form #image button {
   padding: var(--space-0);
   background-color: var(--layer-2-color);
   border: solid 1px inherit;
   color: var(--text-0-color);
+  cursor: pointer;
 }
 
 body>form #image-tag {

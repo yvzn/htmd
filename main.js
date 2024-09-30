@@ -51,7 +51,7 @@ function showEditor(language) {
     editors[language] = document.createElement('custom-editor-view')
     editors[language].setAttribute('language', language)
     editors[language].addEventListener('change', function () { lastModified = language })
-    document.getElementById(language).replaceChildren(editors[language]);
+    document.getElementById(language).appendChild(editors[language]);
   }
 
   if (!lastModified || lastModified === language) {
@@ -84,6 +84,28 @@ function showPreview() {
 
   editors.preview.setAttribute('content', content)
 };
+
+async function tryPasteHtml() {
+  // https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/read
+  const clipboardContents = await navigator.clipboard.read();
+
+  for (const item of clipboardContents) {
+    if (!item.types.includes("text/html")) {
+      continue;
+    }
+
+    const htmlBlob = await item.getType("text/html");
+    const html = await htmlBlob.text()
+    editors['html'].insertAtCursor(html)
+    return
+  }
+}
+
+document.getElementById('html-button').addEventListener('click', async function (event) {
+  if (navigator.clipboard && navigator.clipboard.read) {
+    tryPasteHtml()
+  }
+})
 
 document.getElementById('image-button').addEventListener('click', function () {
   var image = document.getElementById('image-tag');

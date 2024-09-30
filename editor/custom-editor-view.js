@@ -52,6 +52,20 @@ export class CustomEditorView extends HTMLElement {
         this.editorView.dispatch(transaction)
     }
 
+    insertAtCursor(text) {
+        // https://discuss.codemirror.net/t/about-inserting-text-at-the-cursor/4639/2
+        const state = this.editorView.state;
+        const range = state.selection.ranges[0];
+        this.editorView.dispatch({
+            changes: {
+                from: range.from,
+                to: range.to,
+                insert: `${text}`
+            },
+            selection: { anchor: range.from + 1 }
+        })
+    }
+
     get #currentTheme() {
         let theme = EditorView.baseTheme();
         if (document.body.classList.contains('dark')) {
