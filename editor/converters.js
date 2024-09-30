@@ -1,6 +1,6 @@
 import { Converter } from 'showdown';
 import TurndownService from 'turndown';
-import asciidoctor from 'asciidoctor';
+import downdoc from 'downdoc';
 
 import { toAsciidoc } from './to-asciidoc';
 
@@ -42,12 +42,9 @@ function htmlToAsciidoc(html) {
     return toAsciidoc(html)
 }
 
-const Asciidoctor = asciidoctor()
 function asciidocToHtml(asciidoc) {
-    const document = Asciidoctor.convert(asciidoc, { standalone: true })
-    const start = document.indexOf('>', document.indexOf('<body'))
-    const end = document.indexOf('<div id="footer')
-    return document.substring(start + 1, end)
+    const markdown = asciidocToMarkdown(asciidoc)
+    return markdownToHtml(markdown)
 }
 
 function markdownToAsciidoc(markdown) {
@@ -56,8 +53,7 @@ function markdownToAsciidoc(markdown) {
 }
 
 function asciidocToMarkdown(asciidoc) {
-    const html = asciidocToHtml(asciidoc);
-    return htmlToMarkdown(html);
+    return downdoc(asciidoc);
 }
 
 function noConversionRequied(x) {

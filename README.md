@@ -29,7 +29,7 @@ And open http://localhost:5173/ in browser of choice.
 
 [MIT License](https://choosealicense.com/licenses/mit/)
 
-Copyright (c) 2023 Yvan Razafindramanana
+Copyright (c) 2023-2024 Yvan Razafindramanana
 
 ### Third parties
 
@@ -38,4 +38,5 @@ This project uses open-source, third party software:
 - [ViteJS](https://github.com/vitejs/vite): MIT License, Copyright (c) 2019-present Evan You & Vite Contributors
 - [Showdownjs](https://github.com/showdownjs/showdown): MIT License, Copyright (c) 2018,2021 ShowdownJS
 - [Turndown](https://github.com/mixmark-io/turndown): MIT License, Copyright (c) 2017 Dom Christie
+- [Downdoc](https://github.com/opendevise/downdoc): MIT License, Copyright © 2022-present Dan Allen (OpenDevise Inc.) and the individual contributors
 - [Codemirror](https://github.com/codemirror/dev/): MIT License, Copyright (C) 2018 by Marijn Haverbeke, Adrian Heine, and others

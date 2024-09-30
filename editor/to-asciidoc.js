@@ -276,7 +276,7 @@ export var toAsciidoc = function (string) {
             var lis = innerHTML.split('</li>');
             lis.splice(lis.length - 1, 1);
 
-            for (i = 0, len = lis.length; i < len; i++) {
+            for (var i = 0, len = lis.length; i < len; i++) {
                 if (lis[i]) {
                     var prefix = (listType === 'ol') ? (i + 1) + ".  " : "*   ";
                     lis[i] = lis[i].replace(/\s*<li[^>]*>([\s\S]*)/i, function (str, innerHTML) {
