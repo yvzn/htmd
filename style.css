@@ -17,7 +17,6 @@
   --layer-1-color-light: hsl(0deg, 0%, 95%);
   --layer-0-color-light: white;
   --text-0-color-light: black;
-  --border-0-color: var(--layer-0-color);
   --space-0: 0.5rem;
   --space-1: calc(2 * var(--space-0));
   --space-2: calc(4 * var(--space-0));
@@ -32,6 +31,8 @@ body {
   --layer-1-color: var(--layer-1-color-light);
   --layer-0-color: var(--layer-0-color-light);
   --text-0-color: var(--text-0-color-light);
+  --border-0-color: var(--layer-0-color);
+  --border-1-color: var(--text-0-color);
 
   display: grid;
   grid-template-rows: auto auto 1fr;
@@ -48,6 +49,9 @@ body.dark {
   --text-0-color: var(--text-0-color-dark);
 }
 
+body.dark img {
+  filter: brightness(0.8) contrast(1.2);
+}
 
 body>h1 {
   background-color: var(--layer-2-color);
@@ -92,6 +96,7 @@ body.dark>aside .sun-icon {
 body>nav {
   background-color: var(--layer-1-color);
   grid-column: 1/3;
+  display: flex;
 }
 
 a {
@@ -102,6 +107,13 @@ body>nav label {
   display: inline-block;
   padding: var(--space-0);
   cursor: pointer;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--layer-1-color) var(--layer-1-color) var(--layer-0-color) var(--layer-1-color);
+}
+
+body>nav:focus-within label {
+  border-color: var(--layer-1-color) var(--layer-1-color) var(--border-1-color) var(--layer-1-color);
 }
 
 body>nav label svg {
@@ -119,6 +131,10 @@ body>nav input:checked + label {
 
 body>nav input:checked + label span {
   text-decoration: underline;
+}
+
+body>nav input:focus + label {
+  border-color: var(--border-1-color) var(--border-1-color) var(--layer-0-color) var(--border-1-color);
 }
 
 body>article {
@@ -147,6 +163,7 @@ body>form section {
 
 body>form fieldset {
   border: none;
+  padding: 0 0 var(--space-0) 0;
 }
 
 body>form textarea {
@@ -164,28 +181,17 @@ body>form ::placeholder {
   color: var(--text-0-color);
 }
 
-body>form #html button {
-  padding: var(--space-0);
+body>form section button {
+  padding: var(--space-0) var(--space-1);
   background-color: var(--layer-2-color);
-  border: solid 1px inherit;
+  border: solid 1px var(--border-1-color);
   color: var(--text-0-color);
   cursor: pointer;
-  position: absolute;
-  right: 0;
-  z-index: 1;
 }
 
 
 body>form #image fieldset {
   height: 100%;
-}
-
-body>form #image button {
-  padding: var(--space-0);
-  background-color: var(--layer-2-color);
-  border: solid 1px inherit;
-  color: var(--text-0-color);
-  cursor: pointer;
 }
 
 body>form #image-tag {
