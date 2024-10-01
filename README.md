@@ -10,7 +10,7 @@ This is a static HTML website, packaged with [ViteJS](https://vitejs.dev/)
 
 ## Run on Stackblitz
 
-[Edit in Codeflow ⚡️](https://stackblitz.com/~/github.com/yvzn/html-to-markdown)
+[Edit in Codeflow ⚡️](https://stackblitz.com/~/github.com/yvzn/htmd)
 
 ## Run locally
 
