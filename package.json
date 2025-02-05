@@ -1,5 +1,5 @@
 {
-  "name": "vite-starter",
+  "name": "htmd",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.4.8"
+    "vite": "^6.0.11"
   },
   "dependencies": {
     "@codemirror/lang-html": "^6.4.7",
