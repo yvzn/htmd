@@ -1,11 +1,11 @@
-import { EditorView, basicSetup } from "codemirror"
-import { StreamLanguage } from "@codemirror/language"
-import { placeholder } from "@codemirror/view"
-import { Compartment } from "@codemirror/state"
-import { markdown } from "@codemirror/lang-markdown"
-import { html } from "@codemirror/lang-html"
+import { EditorView, basicSetup } from "codemirror";
+import { StreamLanguage } from "@codemirror/language";
+import { Compartment } from "@codemirror/state";
+import { markdown } from "@codemirror/lang-markdown";
+import { html } from "@codemirror/lang-html";
 import { oneDark } from '@codemirror/theme-one-dark';
-import { asciidoc } from "codemirror-asciidoc"
+import { asciidoc } from "codemirror-asciidoc";
+import { placeholder } from "@codemirror/view";
 
 export class CustomEditorView extends HTMLElement {
     constructor() {
